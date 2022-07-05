@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using TicketsApp.Models.Domain;
 using TicketsApp.Models.Identity;
+using TicketsApp.Web.Models.DTO;
 
 namespace TicketsApp.Data
 {
@@ -53,6 +54,8 @@ namespace TicketsApp.Data
                 .WithOne(u => u.AppUser);
         }
 
-        public DbSet<TicketsApp.Models.Domain.Ticket> Ticket { get; set; }
+        public DbSet<Ticket> Ticket { get; set; }
+        public DbSet<ShoppingCart> ShoppingCarts { get; set; }
+        public DbSet<TicketInShoppingCart> TicketInShoppingCarts { get; set; }
     }
 }

@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TicketsApp.Data;
 using TicketsApp.Models.Domain;
+using TicketsApp.Web.Models.DTO;
 
 namespace TicketsApp.Controllers
 {
@@ -20,13 +22,52 @@ namespace TicketsApp.Controllers
         }
 
         // GET: Tickets
-        public async Task<IActionResult> Index(string searchString)
+        public async Task<IActionResult> Index()
         {
-            ViewData["CurrentFilter"] = searchString;
-
-            //var tickets = _context.Find();
-
             return View(await _context.Ticket.ToListAsync());
+        }
+
+        public async Task<IActionResult> AddTicketToCart(Guid? id)
+        {
+            var ticket = await _context.Ticket.Where(t => t.Id.Equals(id)).FirstOrDefaultAsync();
+            AddToShoppingCartDto model = new AddToShoppingCartDto
+            {
+                Ticket = ticket,
+                TicketId = ticket.Id,
+                Quantity = 1
+            };
+            
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddTicketToCart([Bind("TicketId", "Quantity")] AddToShoppingCartDto item)
+        {
+            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userShoppingCart = await _context.ShoppingCarts.Where(sc => sc.OwnerId.Equals(userId)).FirstOrDefaultAsync();
+
+            if (item.TicketId != null && userShoppingCart != null)
+            {
+                var ticket = await _context.Ticket.Where(t => t.Id.Equals(item.TicketId)).FirstOrDefaultAsync();
+                if (ticket != null)
+                {
+                    TicketInShoppingCart itemToAdd = new TicketInShoppingCart
+                    {
+                        Ticket = ticket,
+                        TicketId = ticket.Id,
+                        ShoppingCart = userShoppingCart,
+                        ShoppingCartId = userShoppingCart.Id,
+                        Quantity = item.Quantity
+                    };
+
+                    _context.Add(itemToAdd);
+                    await _context.SaveChangesAsync();
+                }
+                return RedirectToAction("Index", "Tickets");
+            }
+
+            return View();
         }
 
         // GET: Tickets/Details/5
