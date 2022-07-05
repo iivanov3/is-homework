@@ -8,9 +8,9 @@ namespace TicketsApp.Models.Domain
     {
         public Guid Id { get; set; }
         [Required]
-        public DateTime Date { get; set; }
-        [Required]
         public string Title { get; set; }
+        [Required]
+        public DateTime Date { get; set; }
         [Required]
         public int Duration { get; set; }
         [Required]

@@ -15,7 +15,6 @@ namespace TicketsApp.Data
         {
         }
 
-
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -53,5 +52,7 @@ namespace TicketsApp.Data
                 .HasMany(o => o.Orders)
                 .WithOne(u => u.AppUser);
         }
+
+        public DbSet<TicketsApp.Models.Domain.Ticket> Ticket { get; set; }
     }
 }

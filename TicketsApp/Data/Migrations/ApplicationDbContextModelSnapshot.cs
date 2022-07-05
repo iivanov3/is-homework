@@ -169,7 +169,7 @@ namespace TicketsApp.Data.Migrations
 
                     b.HasIndex("AppUserId1");
 
-                    b.ToTable("Orders");
+                    b.ToTable("Order");
                 });
 
             modelBuilder.Entity("TicketsApp.Models.Domain.ShoppingCart", b =>
@@ -187,7 +187,7 @@ namespace TicketsApp.Data.Migrations
                         .IsUnique()
                         .HasFilter("[OwnerId] IS NOT NULL");
 
-                    b.ToTable("ShoppingCarts");
+                    b.ToTable("ShoppingCart");
                 });
 
             modelBuilder.Entity("TicketsApp.Models.Domain.Ticket", b =>
@@ -218,7 +218,7 @@ namespace TicketsApp.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tickets");
+                    b.ToTable("Ticket");
                 });
 
             modelBuilder.Entity("TicketsApp.Models.Domain.TicketInShoppingCart", b =>
@@ -236,7 +236,7 @@ namespace TicketsApp.Data.Migrations
 
                     b.HasIndex("ShoppingCartId");
 
-                    b.ToTable("TicketInShoppingCarts");
+                    b.ToTable("TicketInShoppingCart");
                 });
 
             modelBuilder.Entity("TicketsApp.Models.Identity.AppUser", b =>
