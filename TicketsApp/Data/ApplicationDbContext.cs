@@ -54,8 +54,8 @@ namespace TicketsApp.Data
                 .WithOne(u => u.AppUser);
         }
 
-        public DbSet<Ticket> Ticket { get; set; }
+        public DbSet<Ticket> Tickets { get; set; }
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }
-        public DbSet<TicketInShoppingCart> TicketInShoppingCarts { get; set; }
+        public DbSet<TicketInShoppingCart> TicketsInShoppingCarts { get; set; }
     }
 }

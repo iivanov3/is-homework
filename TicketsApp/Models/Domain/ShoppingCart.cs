@@ -8,8 +8,8 @@ namespace TicketsApp.Models.Domain
     {
         public Guid Id { get; set; }
         public string OwnerId { get; set; }
-        public AppUser Owner { get; set; }
-
+       
+        public virtual AppUser Owner { get; set; }
         public virtual ICollection<TicketInShoppingCart> TicketsInShoppingCart { get; set; }
     }
 }

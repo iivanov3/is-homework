@@ -1,0 +1,47 @@
+﻿@model TicketsApp.Web.Models.DTO.ShoppingCartDto
+
+@{
+    ViewData["Title"] = "Shopping cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Shopping cart contents</h1>
+<hr />
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Sum</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @for (int i = 0; i < Model.TicketsInShoppingCart.Count; i++)
+        {
+            var item = Model.TicketsInShoppingCart[i];
+            <tr>
+                <th scope="row">@(i + 1)</th>
+                <td>@item.Ticket.Title</td>
+                <td>@item.Ticket.Price</td>
+                <td>@item.Quantity</td>
+                <td>@(item.Ticket.Price * item.Quantity)</td>
+                <td><a asp-route-ticketId="@item.TicketId" asp-action="RemoveTicketFromShoppingCart" class="btn btn-danger">Remove</a></td>
+            </tr>
+        }
+    </tbody>
+    
+    <tfoot>
+        <tr>
+            <th scope="col">Total price:</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col">$@Model.TotalPrice</th>
+            <th scope="col"></th>
+        </tr>
+    </tfoot>
+</table>

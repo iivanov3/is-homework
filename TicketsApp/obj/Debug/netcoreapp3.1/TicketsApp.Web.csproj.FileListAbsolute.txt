@@ -168,4 +168,5 @@ C:\Users\Ivan\source\repos\TicketsApp\TicketsApp\obj\Debug\netcoreapp3.1\Tickets
 C:\Users\Ivan\source\repos\TicketsApp\TicketsApp\obj\Debug\netcoreapp3.1\TicketsApp.Web.genruntimeconfig.cache
 C:\Users\Ivan\source\repos\TicketsApp\TicketsApp\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
 C:\Users\Ivan\source\repos\TicketsApp\TicketsApp\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
-C:\Users\Ivan\source\repos\TicketsApp\TicketsApp\obj\Debug\netcoreapp3.1\Razor\Views\Tickets\AddTicketToCart.cshtml.g.cs
+C:\Users\Ivan\source\repos\TicketsApp\TicketsApp\obj\Debug\netcoreapp3.1\Razor\Views\Tickets\AddTicketToShoppingCart.cshtml.g.cs
+C:\Users\Ivan\source\repos\TicketsApp\TicketsApp\obj\Debug\netcoreapp3.1\Razor\Views\ShoppingCart\Index.cshtml.g.cs

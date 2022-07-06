@@ -16,6 +16,8 @@
     <Compile Remove="Data\Migrations\20220705094211_PriceDouble3.Designer.cs" />
     <Compile Remove="Data\Migrations\20220705094352_test1.cs" />
     <Compile Remove="Data\Migrations\20220705094352_test1.Designer.cs" />
+    <Compile Remove="Data\Migrations\20220706115017_RenameMigration.cs" />
+    <Compile Remove="Data\Migrations\20220706115017_RenameMigration.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

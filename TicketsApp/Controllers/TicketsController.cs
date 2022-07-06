@@ -24,12 +24,14 @@ namespace TicketsApp.Controllers
         // GET: Tickets
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Ticket.ToListAsync());
+            return View(await _context.Tickets.ToListAsync());
         }
 
-        public async Task<IActionResult> AddTicketToCart(Guid? id)
+        public async Task<IActionResult> AddTicketToShoppingCart(Guid? id)
         {
-            var ticket = await _context.Ticket.Where(t => t.Id.Equals(id)).FirstOrDefaultAsync();
+            var ticket = await _context.Tickets.Where(t => t.Id.Equals(id))
+                                               .FirstOrDefaultAsync();
+
             AddToShoppingCartDto model = new AddToShoppingCartDto
             {
                 Ticket = ticket,
@@ -42,14 +44,17 @@ namespace TicketsApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddTicketToCart([Bind("TicketId", "Quantity")] AddToShoppingCartDto item)
+        public async Task<IActionResult> AddTicketToShoppingCart([Bind("TicketId", "Quantity")] AddToShoppingCartDto item)
         {
             string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var userShoppingCart = await _context.ShoppingCarts.Where(sc => sc.OwnerId.Equals(userId)).FirstOrDefaultAsync();
+
+            var userShoppingCart = await _context.ShoppingCarts.Where(sc => sc.OwnerId.Equals(userId))
+                                                               .FirstOrDefaultAsync();
 
             if (item.TicketId != null && userShoppingCart != null)
             {
-                var ticket = await _context.Ticket.Where(t => t.Id.Equals(item.TicketId)).FirstOrDefaultAsync();
+                var ticket = await _context.Tickets.Where(t => t.Id.Equals(item.TicketId))
+                                                   .FirstOrDefaultAsync();
                 if (ticket != null)
                 {
                     TicketInShoppingCart itemToAdd = new TicketInShoppingCart
@@ -62,12 +67,10 @@ namespace TicketsApp.Controllers
                     };
 
                     _context.Add(itemToAdd);
-                    await _context.SaveChangesAsync();
+                    await _context.SaveChangesAsync();                    
                 }
-                return RedirectToAction("Index", "Tickets");
             }
-
-            return View();
+            return RedirectToAction("Index", "Tickets");
         }
 
         // GET: Tickets/Details/5
@@ -78,8 +81,8 @@ namespace TicketsApp.Controllers
                 return NotFound();
             }
 
-            var ticket = await _context.Ticket
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var ticket = await _context.Tickets.FirstOrDefaultAsync(m => m.Id == id);
+            
             if (ticket == null)
             {
                 return NotFound();
@@ -119,7 +122,7 @@ namespace TicketsApp.Controllers
                 return NotFound();
             }
 
-            var ticket = await _context.Ticket.FindAsync(id);
+            var ticket = await _context.Tickets.FindAsync(id);
             if (ticket == null)
             {
                 return NotFound();
@@ -170,7 +173,7 @@ namespace TicketsApp.Controllers
                 return NotFound();
             }
 
-            var ticket = await _context.Ticket
+            var ticket = await _context.Tickets
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (ticket == null)
             {
@@ -185,15 +188,15 @@ namespace TicketsApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
-            var ticket = await _context.Ticket.FindAsync(id);
-            _context.Ticket.Remove(ticket);
+            var ticket = await _context.Tickets.FindAsync(id);
+            _context.Tickets.Remove(ticket);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool TicketExists(Guid id)
         {
-            return _context.Ticket.Any(e => e.Id == id);
+            return _context.Tickets.Any(e => e.Id == id);
         }
     }
 }
