@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using TicketsApp.Models.Identity;
+using TicketsApp.Web.Models.Domain;
 
 namespace TicketsApp.Models.Domain
 {
     public class Order
     {
-        public Guid AppUserId { get; set; }
-        public AppUser AppUser { get; set; }
-        public Guid ShoppingCartId { get; set; }
-        public ShoppingCart ShoppingCart { get; set; }
+        public Guid Id { get; set; }
+        public string UserId { get; set; }
+        public AppUser User { get; set; }
+        public DateTime OrderedOn { get; set; }
+
+        public ICollection<TicketInOrder> TicketsInOrder { get; set; }
     }
 }

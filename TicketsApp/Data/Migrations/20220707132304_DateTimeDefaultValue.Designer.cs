@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TicketsApp.Data;
 
 namespace TicketsApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220707132304_DateTimeDefaultValue")]
+    partial class DateTimeDefaultValue
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -163,7 +165,7 @@ namespace TicketsApp.Data.Migrations
                     b.Property<DateTime>("OrderedOn")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValueSql("GETDATE()");
+                        .HasDefaultValueSql("GETUTCDATE()");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
@@ -388,7 +390,7 @@ namespace TicketsApp.Data.Migrations
             modelBuilder.Entity("TicketsApp.Models.Domain.Order", b =>
                 {
                     b.HasOne("TicketsApp.Models.Identity.AppUser", "User")
-                        .WithMany()
+                        .WithMany("PreviousOrders")
                         .HasForeignKey("UserId");
                 });
 

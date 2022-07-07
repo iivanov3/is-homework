@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TicketsApp.Data;
 
 namespace TicketsApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220707004429_OneToOneOrderUser")]
+    partial class OneToOneOrderUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -159,11 +161,6 @@ namespace TicketsApp.Data.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("OrderedOn")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
@@ -316,6 +313,32 @@ namespace TicketsApp.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("TicketsApp.Web.Models.Domain.CompletedOrder", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("OrderId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("TimeCompleted")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("UserId")
+                        .IsUnique()
+                        .HasFilter("[UserId] IS NOT NULL");
+
+                    b.ToTable("CompletedOrder");
+                });
+
             modelBuilder.Entity("TicketsApp.Web.Models.Domain.TicketInOrder", b =>
                 {
                     b.Property<Guid>("TicketId")
@@ -414,10 +437,23 @@ namespace TicketsApp.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("TicketsApp.Web.Models.Domain.CompletedOrder", b =>
+                {
+                    b.HasOne("TicketsApp.Models.Domain.Order", "Order")
+                        .WithMany()
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TicketsApp.Models.Identity.AppUser", "User")
+                        .WithOne("PreviousOrders")
+                        .HasForeignKey("TicketsApp.Web.Models.Domain.CompletedOrder", "UserId");
+                });
+
             modelBuilder.Entity("TicketsApp.Web.Models.Domain.TicketInOrder", b =>
                 {
                     b.HasOne("TicketsApp.Models.Domain.Order", "Order")
-                        .WithMany("TicketsInOrder")
+                        .WithMany("Tickets")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using TicketsApp.Web.Models.Domain;
 
 namespace TicketsApp.Models.Domain
 {
@@ -21,5 +22,6 @@ namespace TicketsApp.Models.Domain
         public int Rating { get; set; }
         
         public virtual ICollection<TicketInShoppingCart> TicketsInShoppingCart { get; set; }
+        public virtual ICollection<TicketInOrder> Orders { get; set; }
     }
 }

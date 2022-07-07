@@ -1,0 +1,42 @@
+﻿@model TicketsApp.Web.Models.DTO.CompletedOrderDto
+
+@{
+    ViewData["Title"] = "Orders";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Orders history</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Quantity</th>
+            <th>Ordered on</th>
+            <th>Movie date</th>
+            <th>Duration</th>
+            <th>Price</th>
+            <th>Rating</th>
+            <th>Genre</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody> 
+        @for (int i = 0; i < Model.CompletedOrders.Count; i++) {
+            var item = Model.CompletedOrders[i];
+            <tr>
+                <td>@item.Title</td>
+                <td>@item.Quantity</td>
+                <td>@item.OrderedOn</td>
+                <td>@item.PlayedOn</td>
+                <td>@item.Duration</td>
+                <td>$@item.Price</td>
+                <td>@item.Rating</td>
+                <td>@item.Genre</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Title">Generate PDF</a> |
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

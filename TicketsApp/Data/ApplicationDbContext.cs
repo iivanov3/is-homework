@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using TicketsApp.Models.Domain;
 using TicketsApp.Models.Identity;
+using TicketsApp.Web.Models.Domain;
 using TicketsApp.Web.Models.DTO;
 
 namespace TicketsApp.Data
@@ -47,15 +48,32 @@ namespace TicketsApp.Data
                 .HasForeignKey<ShoppingCart>(sc => sc.OwnerId);
 
             builder.Entity<Order>()
-                .HasKey(o => new { o.ShoppingCartId, o.AppUserId });
+                .Property(o => o.Id)
+                .ValueGeneratedOnAdd();
 
-            builder.Entity<AppUser>()
-                .HasMany(o => o.Orders)
-                .WithOne(u => u.AppUser);
+            builder.Entity<Order>()
+                .Property(o => o.OrderedOn)
+                .HasDefaultValueSql("GETDATE()")
+                .ValueGeneratedOnAdd();
+
+            builder.Entity<TicketInOrder>()
+                .HasKey(t => new { t.TicketId, t.OrderId });
+
+            builder.Entity<TicketInOrder>()
+                .HasOne(t => t.Ticket)
+                .WithMany(o => o.Orders)
+                .HasForeignKey(t => t.TicketId);
+
+            builder.Entity<TicketInOrder>()
+                .HasOne(o => o.Order)
+                .WithMany(t => t.TicketsInOrder)
+                .HasForeignKey(o => o.OrderId);
         }
 
         public DbSet<Ticket> Tickets { get; set; }
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }
         public DbSet<TicketInShoppingCart> TicketsInShoppingCarts { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<TicketInOrder> TicketsInOrders { get; set; }
     }
 }

@@ -18,6 +18,34 @@
     <Compile Remove="Data\Migrations\20220705094352_test1.Designer.cs" />
     <Compile Remove="Data\Migrations\20220706115017_RenameMigration.cs" />
     <Compile Remove="Data\Migrations\20220706115017_RenameMigration.Designer.cs" />
+    <Compile Remove="Data\Migrations\20220706172810_OrderMigration.cs" />
+    <Compile Remove="Data\Migrations\20220706172810_OrderMigration.Designer.cs" />
+    <Compile Remove="Data\Migrations\20220706174301_OrderMigration.cs" />
+    <Compile Remove="Data\Migrations\20220706174301_OrderMigration.Designer.cs" />
+    <Compile Remove="Data\Migrations\20220706174440_Test1.cs" />
+    <Compile Remove="Data\Migrations\20220706174440_Test1.Designer.cs" />
+    <Compile Remove="Data\Migrations\20220706174707_Test1.cs" />
+    <Compile Remove="Data\Migrations\20220706174707_Test1.Designer.cs" />
+    <Compile Remove="Data\Migrations\20220706175100_test1.cs" />
+    <Compile Remove="Data\Migrations\20220706175100_test1.Designer.cs" />
+    <Compile Remove="Data\Migrations\20220706175252_test1.cs" />
+    <Compile Remove="Data\Migrations\20220706175252_test1.Designer.cs" />
+    <Compile Remove="Data\Migrations\20220706180311_TicketInOrderMigration.cs" />
+    <Compile Remove="Data\Migrations\20220706180311_TicketInOrderMigration.Designer.cs" />
+    <Compile Remove="Data\Migrations\20220706180342_TicketInOrderMigration.cs" />
+    <Compile Remove="Data\Migrations\20220706180342_TicketInOrderMigration.Designer.cs" />
+    <Compile Remove="Data\Migrations\20220706180526_TicketInOrderMigration.cs" />
+    <Compile Remove="Data\Migrations\20220706180526_TicketInOrderMigration.Designer.cs" />
+    <Compile Remove="Data\Migrations\20220706190345_TicketInOrderMigration2.cs" />
+    <Compile Remove="Data\Migrations\20220706190345_TicketInOrderMigration2.Designer.cs" />
+    <Compile Remove="Data\Migrations\20220706190505_TicketInOrderMigration2.cs" />
+    <Compile Remove="Data\Migrations\20220706190505_TicketInOrderMigration2.Designer.cs" />
+    <Compile Remove="Data\Migrations\20220706204150_EagerOrder.cs" />
+    <Compile Remove="Data\Migrations\20220706204150_EagerOrder.Designer.cs" />
+    <Compile Remove="Data\Migrations\20220706214224_Update3.cs" />
+    <Compile Remove="Data\Migrations\20220706214224_Update3.Designer.cs" />
+    <Compile Remove="Data\Migrations\20220706221924_FinalMigration.cs" />
+    <Compile Remove="Data\Migrations\20220706221924_FinalMigration.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
