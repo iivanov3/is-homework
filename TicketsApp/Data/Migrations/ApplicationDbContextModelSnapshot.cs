@@ -416,14 +416,14 @@ namespace TicketsApp.Data.Migrations
 
             modelBuilder.Entity("TicketsApp.Web.Models.Domain.TicketInOrder", b =>
                 {
-                    b.HasOne("TicketsApp.Models.Domain.Order", "Order")
-                        .WithMany("TicketsInOrder")
+                    b.HasOne("TicketsApp.Models.Domain.Ticket", "Ticket")
+                        .WithMany("Orders")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TicketsApp.Models.Domain.Ticket", "Ticket")
-                        .WithMany("Orders")
+                    b.HasOne("TicketsApp.Models.Domain.Order", "Order")
+                        .WithMany("TicketsInOrder")
                         .HasForeignKey("TicketId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

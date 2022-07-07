@@ -62,12 +62,12 @@ namespace TicketsApp.Data
             builder.Entity<TicketInOrder>()
                 .HasOne(t => t.Ticket)
                 .WithMany(o => o.Orders)
-                .HasForeignKey(t => t.TicketId);
+                .HasForeignKey(t => t.OrderId);
 
             builder.Entity<TicketInOrder>()
                 .HasOne(o => o.Order)
                 .WithMany(t => t.TicketsInOrder)
-                .HasForeignKey(o => o.OrderId);
+                .HasForeignKey(o => o.TicketId);
         }
 
         public DbSet<Ticket> Tickets { get; set; }

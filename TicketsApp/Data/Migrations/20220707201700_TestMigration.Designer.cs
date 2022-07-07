@@ -10,8 +10,8 @@ using TicketsApp.Data;
 namespace TicketsApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220707135954_NoPreviousOrders")]
-    partial class NoPreviousOrders
+    [Migration("20220707201700_TestMigration")]
+    partial class TestMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -418,14 +418,14 @@ namespace TicketsApp.Data.Migrations
 
             modelBuilder.Entity("TicketsApp.Web.Models.Domain.TicketInOrder", b =>
                 {
-                    b.HasOne("TicketsApp.Models.Domain.Order", "Order")
-                        .WithMany("TicketsInOrder")
+                    b.HasOne("TicketsApp.Models.Domain.Ticket", "Ticket")
+                        .WithMany("Orders")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TicketsApp.Models.Domain.Ticket", "Ticket")
-                        .WithMany("Orders")
+                    b.HasOne("TicketsApp.Models.Domain.Order", "Order")
+                        .WithMany("TicketsInOrder")
                         .HasForeignKey("TicketId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

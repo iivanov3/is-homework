@@ -46,6 +46,12 @@
     <Compile Remove="Data\Migrations\20220706214224_Update3.Designer.cs" />
     <Compile Remove="Data\Migrations\20220706221924_FinalMigration.cs" />
     <Compile Remove="Data\Migrations\20220706221924_FinalMigration.Designer.cs" />
+    <Compile Remove="Data\Migrations\20220707135954_NoPreviousOrders.cs" />
+    <Compile Remove="Data\Migrations\20220707135954_NoPreviousOrders.Designer.cs" />
+    <Compile Remove="Data\Migrations\20220707154337_OneToManyOrdersTest.cs" />
+    <Compile Remove="Data\Migrations\20220707154337_OneToManyOrdersTest.Designer.cs" />
+    <Compile Remove="Data\Migrations\20220707202112_NonVirtual.cs" />
+    <Compile Remove="Data\Migrations\20220707202112_NonVirtual.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
