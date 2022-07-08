@@ -25,6 +25,7 @@ namespace TicketsApp.Controllers
         {
             var model = await _context.Tickets.ToListAsync();
             TicketDto tickets = new TicketDto { Tickets = model };
+
             return View(tickets);
         }
 
@@ -37,7 +38,7 @@ namespace TicketsApp.Controllers
             TicketDto result = new TicketDto { Tickets = tickets, FilterDate = model.FilterDate };
             return View(result);
         }
-
+        // public async Task<IActionResult> GetTicketsByGenre(string genre)
         public async Task<IActionResult> AddTicketToShoppingCart(Guid? id)
         {
             var ticket = await _context.Tickets.Where(t => t.Id.Equals(id))

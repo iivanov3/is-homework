@@ -10,8 +10,15 @@
 <div class="row">
     <div class="col">
         <form asp-action="Index" asp-controller="Tickets" method="post">
-            <input asp-action="Index" asp-for="FilterDate" type="date">
-            <input type="submit" value="Filter by Date" class="btn btn-primary"/>
+            @if (Model.FilterDate == DateTime.MinValue)
+            {
+                <input asp-action="Index" asp-for="FilterDate" type="date" value="mm/dd/yyyy"/>
+            }
+            else 
+            {
+                <input asp-action="Index" asp-for="FilterDate" type="date"/>
+            }
+            <input type="submit" value="Filter tickets" class="btn btn-primary"/>
         </form>
     </div>
 </div>
