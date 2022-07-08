@@ -21,10 +21,21 @@ namespace TicketsApp.Controllers
             _context = context;
         }
 
-        // GET: Tickets
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Tickets.ToListAsync());
+            var model = await _context.Tickets.ToListAsync();
+            TicketDto tickets = new TicketDto { Tickets = model };
+            return View(tickets);
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<IActionResult> Index(TicketDto model)
+        {
+            var tickets = await _context.Tickets.Where(t => t.Date.Date == model.FilterDate.Date)
+                                                .ToListAsync();
+
+            TicketDto result = new TicketDto { Tickets = tickets, FilterDate = model.FilterDate };
+            return View(result);
         }
 
         public async Task<IActionResult> AddTicketToShoppingCart(Guid? id)

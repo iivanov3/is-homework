@@ -1,11 +1,20 @@
-﻿@model IEnumerable<TicketsApp.Models.Domain.Ticket>
+﻿@model TicketsApp.Web.Models.DTO.TicketDto
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Tickets</h1>
+
+<div class="row">
+    <div class="col">
+        <form asp-action="Index" asp-controller="Tickets" method="post">
+            <input asp-action="Index" asp-for="FilterDate" type="date">
+            <input type="submit" value="Filter by Date" class="btn btn-primary"/>
+        </form>
+    </div>
+</div>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -13,29 +22,17 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Duration)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Genre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Rating)
-            </th>
+            <th>Title</th>
+            <th>Date</th>
+            <th>Duration</th>
+            <th>Genre</th>
+            <th>Price</th>
+            <th>Rating</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model.Tickets) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)

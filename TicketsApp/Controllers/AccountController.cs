@@ -5,7 +5,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using TicketsApp.Models.Domain;
-using TicketsApp.Models.DTO;
+using TicketsApp.Web.Models.DTO;
 using TicketsApp.Models.Identity;
 
 namespace EShop.Controllers

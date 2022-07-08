@@ -4,8 +4,9 @@ using TicketsApp.Models.Domain;
 
 namespace TicketsApp.Web.Models.DTO
 {
-    public class OrderDto
+    public class TicketDto
     {
-        public List<Order> Orders { get; set; }
+        public List<Ticket> Tickets { get; set; }
+        public DateTime FilterDate { get; set; }
     }
 }

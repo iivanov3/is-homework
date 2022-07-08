@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace TicketsApp.Models.DTO
+namespace TicketsApp.Web.Models.DTO
 {
     public class UserLoginDto
     {
