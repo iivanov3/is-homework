@@ -21,7 +21,7 @@ namespace TicketsApp.Models.Domain
         [Required]
         public int Rating { get; set; }
         
-        public virtual ICollection<TicketInShoppingCart> TicketsInShoppingCart { get; set; }
-        public virtual ICollection<TicketInOrder> Orders { get; set; }
+        public ICollection<TicketInShoppingCart> TicketsInShoppingCart { get; set; }
+        public ICollection<TicketInOrder> Orders { get; set; }
     }
 }

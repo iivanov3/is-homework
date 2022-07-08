@@ -10,6 +10,6 @@ namespace TicketsApp.Models.Domain
         public string OwnerId { get; set; }
         public AppUser Owner { get; set; }
 
-        public virtual ICollection<TicketInShoppingCart> TicketsInShoppingCart { get; set; }
+        public ICollection<TicketInShoppingCart> TicketsInShoppingCart { get; set; }
     }
 }

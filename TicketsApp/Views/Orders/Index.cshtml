@@ -1,4 +1,4 @@
-﻿@model TicketsApp.Web.Models.DTO.OrderDto
+﻿@model List<TicketsApp.Models.Domain.Order>
 
 @{
     ViewData["Title"] = "Orders";
@@ -7,35 +7,46 @@
 
 <h1>Order history</h1>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Order #</th>
-            <th>Order ID</th>
-            <th>Ordered on</th>
-            <th>Total price</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody> 
-        @for (int i = 0; i < Model.Orders.Count; i++)
-        {
-            var item = Model.Orders[i];
-            double price = 0.0;
-            @foreach (var ticket in item.TicketsInOrder)
-            {
-                price += (ticket.Quantity * ticket.Ticket.Price);
-            }
-
+<div class="container">
+    <table class="table">
+        <thead>
             <tr>
-                <td>@(i + 1)</td>
-                <td>@item.Id</td>
-                <td>@item.OrderedOn</td>
-                <td>$@price<td>
-                <td>
-                    <a asp-action="Details" asp-route-orderId="@item.Id">Details</a>
-                </td>
+                <th scope="col">Order #</th>
+                <th scope="col">Order ID</th>
+                <th scope="col">Ordered on</th>
+                <th scope="col">Total price</th>
+                <th scope="col"></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+
+        <tbody> 
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                var item = Model[i];
+                double price = 0.0;
+                @foreach (var ticket in item.TicketsInOrder)
+                {
+                    price += (ticket.Quantity * ticket.Ticket.Price);
+                }
+
+                <tr>
+                    <td>@(i + 1)</td>
+                    <td>@item.Id</td>
+                    <td>@item.OrderedOn</td>
+                    <td>$@price</td>
+                    <td><a asp-action="Details" asp-route-orderId="@item.Id">Details</a></td>
+                </tr>
+            }
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <th scope="col">Total price:</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col">$@ViewBag.totalPrice</th>
+                <th></th>
+            </tr>
+        </tfoot>
+    </table>
+</div>

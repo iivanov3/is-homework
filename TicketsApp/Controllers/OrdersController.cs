@@ -30,30 +30,45 @@ namespace TicketsApp.Web.Controllers
         public async Task<IActionResult> Index()
         {
             string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var userOrders = await _context.Orders.Where(o => o.UserId.Equals(userId))
+
+            var userOrders = await _context.Orders.Where(t => t.UserId.Equals(userId))
                                                   .Include(t => t.TicketsInOrder)
+                                                  .Include("TicketsInOrder.Ticket")
                                                   .ToListAsync();
-            await _context.Tickets.ToListAsync(); // it magically works thanks to this line
-            /*var test = await _context.Users.Where(u => u.Id.Equals(userId))
-                                         .Include(t => t.UserOrders)//.Include(t => t.UserOrders.TicketsInOrders)
-                                         .ToListAsync();
-            */
-            OrderDto model = new OrderDto
+
+            //await _context.Tickets.ToListAsync(); // magically works thanks to this line
+
+
+            double price = 0.0;
+            foreach (var o in userOrders)
             {
-                Orders = userOrders
-            };
-            return View(model);
+                foreach (var t in o.TicketsInOrder)
+                {
+                    price += (t.Quantity * t.Ticket.Price);
+                }
+            }
+            ViewBag.totalPrice = price;
+
+            return View(userOrders);
         }
 
         public async Task<IActionResult> Details(Guid? orderId)
         {
             string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var userOrders = await _context.Orders.Where(o => o.UserId.Equals(userId) && o.Id == orderId)
-                                                  .Include(t => t.TicketsInOrder)
-                                                  .SingleOrDefaultAsync();// .ToListAsync();
-            await _context.Tickets.ToListAsync(); // the same trick again
+            
+            var model = await _context.TicketsInOrders.Include(t => t.Order)
+                                                      .Include(t => t.Ticket)
+                                                      .Where(t => t.Order.UserId.Equals(userId) && t.Order.Id == orderId)
+                                                      .ToListAsync();
 
-            return View(userOrders);
+            double price = 0.0;
+            foreach (var ticket in model[0].Order.TicketsInOrder)
+            {
+                price += (ticket.Quantity * ticket.Ticket.Price);
+            }
+            ViewBag.totalPrice = price;
+
+            return View(model);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model TicketsApp.Models.Domain.Order
+﻿@model List<TicketsApp.Web.Models.Domain.TicketInOrder>
 
 @{
     ViewData["Title"] = "Details";
@@ -21,10 +21,11 @@
                 <th>Total price</th>
             </tr>
         </thead>
+
         <tbody> 
-            @for (int i = 0; i < Model.TicketsInOrder.Count; i++)
+            @for (int i = 0; i < Model.Count; i++)
             {
-                var ticket = Model.TicketsInOrder.ToList()[i];
+                var ticket = Model[i];
                 <tr>
                     <td>@(i + 1)</td>
                     <td>@ticket.Ticket.Title</td>
@@ -34,10 +35,24 @@
                     <td>@ticket.Ticket.Duration</td>
                     <td>@ticket.Quantity</td>
                     <td>$@ticket.Ticket.Price</td>
-                    <td>@(ticket.Quantity * ticket.Ticket.Price)</td>
+                    <td>$@(ticket.Quantity * ticket.Ticket.Price)</td>
                 </tr>
             }
         </tbody>
+    
+        <tfoot>
+            <tr>
+                <th scope="col">Total price:</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col">$@ViewBag.totalPrice</th>
+            </tr>
+        </tfoot>
     </table>
 
     <input type="submit" value="Generate PDF" class="btn btn-success" />
