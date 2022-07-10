@@ -1,0 +1,59 @@
+﻿@model TicketsApp.Domain.DTO.OrderDto
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Order details</h1>
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Ticket #</th>
+                <th>Title</th>
+                <th>Played on</th>
+                <th>Rating</th>
+                <th>Genre</th>
+                <th>Duration</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total price</th>
+            </tr>
+        </thead>
+
+        <tbody> 
+            @for (int i = 0; i < Model.Order.TicketsInOrder.Count; i++)
+            {
+                var ticket = Model.Order.TicketsInOrder.ToList()[i];
+                <tr>
+                    <td>@(i + 1)</td>
+                    <td>@ticket.Ticket.Title</td>
+                    <td>@ticket.Ticket.Date</td>
+                    <td>@ticket.Ticket.Rating</td>
+                    <td>@ticket.Ticket.Genre</td>
+                    <td>@ticket.Ticket.Duration</td>
+                    <td>@ticket.Quantity</td>
+                    <td>$@ticket.Ticket.Price</td>
+                    <td>$@(ticket.Quantity * ticket.Ticket.Price)</td>
+                </tr>
+            }
+        </tbody>
+    
+        <tfoot>
+            <tr>
+                <th scope="col">Total price:</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col">$@Model.TotalPrice</th>
+            </tr>
+        </tfoot>
+    </table>
+
+    <input type="submit" value="Generate PDF" class="btn btn-success" />
+</div>
