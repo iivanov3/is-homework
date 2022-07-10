@@ -1,0 +1,10 @@
+C:\Users\Ivan\source\repos\TicketsApplication\TicketsApp\TicketsApp.Domain\bin\Debug\netcoreapp3.1\TicketsApp.Domain.deps.json
+C:\Users\Ivan\source\repos\TicketsApplication\TicketsApp\TicketsApp.Domain\bin\Debug\netcoreapp3.1\TicketsApp.Domain.dll
+C:\Users\Ivan\source\repos\TicketsApplication\TicketsApp\TicketsApp.Domain\bin\Debug\netcoreapp3.1\TicketsApp.Domain.pdb
+C:\Users\Ivan\source\repos\TicketsApplication\TicketsApp\TicketsApp.Domain\obj\Debug\netcoreapp3.1\TicketsApp.Domain.csproj.AssemblyReference.cache
+C:\Users\Ivan\source\repos\TicketsApplication\TicketsApp\TicketsApp.Domain\obj\Debug\netcoreapp3.1\TicketsApp.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ivan\source\repos\TicketsApplication\TicketsApp\TicketsApp.Domain\obj\Debug\netcoreapp3.1\TicketsApp.Domain.AssemblyInfoInputs.cache
+C:\Users\Ivan\source\repos\TicketsApplication\TicketsApp\TicketsApp.Domain\obj\Debug\netcoreapp3.1\TicketsApp.Domain.AssemblyInfo.cs
+C:\Users\Ivan\source\repos\TicketsApplication\TicketsApp\TicketsApp.Domain\obj\Debug\netcoreapp3.1\TicketsApp.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Ivan\source\repos\TicketsApplication\TicketsApp\TicketsApp.Domain\obj\Debug\netcoreapp3.1\TicketsApp.Domain.dll
+C:\Users\Ivan\source\repos\TicketsApplication\TicketsApp\TicketsApp.Domain\obj\Debug\netcoreapp3.1\TicketsApp.Domain.pdb

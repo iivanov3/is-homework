@@ -1,0 +1,15 @@
+C:\Users\Ivan\source\repos\TicketsApplication\TicketsApp\TicketsApp.Services\bin\Debug\netcoreapp3.1\TicketsApp.Services.deps.json
+C:\Users\Ivan\source\repos\TicketsApplication\TicketsApp\TicketsApp.Services\bin\Debug\netcoreapp3.1\TicketsApp.Services.dll
+C:\Users\Ivan\source\repos\TicketsApplication\TicketsApp\TicketsApp.Services\bin\Debug\netcoreapp3.1\TicketsApp.Services.pdb
+C:\Users\Ivan\source\repos\TicketsApplication\TicketsApp\TicketsApp.Services\bin\Debug\netcoreapp3.1\TicketsApp.Domain.dll
+C:\Users\Ivan\source\repos\TicketsApplication\TicketsApp\TicketsApp.Services\bin\Debug\netcoreapp3.1\TicketsApp.Repository.dll
+C:\Users\Ivan\source\repos\TicketsApplication\TicketsApp\TicketsApp.Services\bin\Debug\netcoreapp3.1\TicketsApp.Domain.pdb
+C:\Users\Ivan\source\repos\TicketsApplication\TicketsApp\TicketsApp.Services\bin\Debug\netcoreapp3.1\TicketsApp.Repository.pdb
+C:\Users\Ivan\source\repos\TicketsApplication\TicketsApp\TicketsApp.Services\obj\Debug\netcoreapp3.1\TicketsApp.Services.csproj.AssemblyReference.cache
+C:\Users\Ivan\source\repos\TicketsApplication\TicketsApp\TicketsApp.Services\obj\Debug\netcoreapp3.1\TicketsApp.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ivan\source\repos\TicketsApplication\TicketsApp\TicketsApp.Services\obj\Debug\netcoreapp3.1\TicketsApp.Services.AssemblyInfoInputs.cache
+C:\Users\Ivan\source\repos\TicketsApplication\TicketsApp\TicketsApp.Services\obj\Debug\netcoreapp3.1\TicketsApp.Services.AssemblyInfo.cs
+C:\Users\Ivan\source\repos\TicketsApplication\TicketsApp\TicketsApp.Services\obj\Debug\netcoreapp3.1\TicketsApp.Services.csproj.CoreCompileInputs.cache
+C:\Users\Ivan\source\repos\TicketsApplication\TicketsApp\TicketsApp.Services\obj\Debug\netcoreapp3.1\TicketsApp.Services.csproj.CopyComplete
+C:\Users\Ivan\source\repos\TicketsApplication\TicketsApp\TicketsApp.Services\obj\Debug\netcoreapp3.1\TicketsApp.Services.dll
+C:\Users\Ivan\source\repos\TicketsApplication\TicketsApp\TicketsApp.Services\obj\Debug\netcoreapp3.1\TicketsApp.Services.pdb

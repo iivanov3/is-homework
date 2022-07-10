@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20220709205539_InitialMigration.cs" />
+    <Compile Remove="Migrations\20220709205539_InitialMigration.Designer.cs" />
+    <Compile Remove="Migrations\20220709205930_initial.cs" />
+    <Compile Remove="Migrations\20220709205930_initial.Designer.cs" />
+    <Compile Remove="Migrations\20220709210322_initial.cs" />
+    <Compile Remove="Migrations\20220709210322_initial.Designer.cs" />
+    <Compile Remove="Migrations\20220710123243_second.cs" />
+    <Compile Remove="Migrations\20220710123243_second.Designer.cs" />
+    <Compile Remove="Migrations\20220710123340_second.cs" />
+    <Compile Remove="Migrations\20220710123340_second.Designer.cs" />
+    <Compile Remove="Migrations\20220710131254_testmigration.cs" />
+    <Compile Remove="Migrations\20220710131254_testmigration.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TicketsApp.Domain\TicketsApp.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
